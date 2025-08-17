@@ -17,9 +17,9 @@
   },
   "dependencies": {
     "@pandacss/dev": "workspace:*",
-    "gatsby": "5.14.1",
+    "gatsby": "5.14.6",
     "gatsby-plugin-postcss": "6.14.0",
-    "postcss": "8.4.49",
+    "postcss": "8.5.6",
     "react": "19.1.1",
     "react-dom": "19.1.1"
   },
