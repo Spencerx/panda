@@ -972,7 +972,6 @@
   ```
 
 - f419993: - Prevent extracting style props of `styled` when not explicitly imported
-
   - Allow using multiple aliases for the same identifier for the `/css` entrypoints just like `/patterns` and `/recipes`
 
   ```ts
@@ -1020,7 +1019,6 @@
 ### Minor Changes
 
 - f0296249: - Sort the longhand/shorthand atomic rules in a deterministic order to prevent property conflicts
-
   - Automatically merge the `base` object in the `css` root styles in the runtime
   - This may be a breaking change depending on how your styles are created
 
@@ -1128,7 +1126,6 @@
 ### Patch Changes
 
 - d5977c24: - Add a `--logfile` flag to the `panda`, `panda codegen`, `panda cssgen` and `panda debug` commands.
-
   - Add a `logfile` option to the postcss plugin
 
   Logs will be streamed to the file specified by the `--logfile` flag or the `logfile` option. This is useful for
@@ -1210,7 +1207,6 @@
 ### Minor Changes
 
 - f58f6df2: Refactor `config.hooks` to be much more powerful, you can now:
-
   - Tweak the config after it has been resolved (after presets are loaded and merged), this could be used to dynamically
     load all `recipes` from a folder
   - Transform a source file's content before parsing it, this could be used to transform the file content to a
@@ -1322,7 +1318,6 @@
 - 84304901: Improve performance, mostly for the CSS generation by removing a lot of `postcss` usage (and plugins).
 
   ## Public changes:
-
   - Introduce a new `config.lightningcss` option to use `lightningcss` (currently disabled by default) instead of
     `postcss`.
   - Add a new `config.browserslist` option to configure the browserslist used by `lightningcss`.
@@ -1330,7 +1325,6 @@
     this run.
 
   ## Internal changes:
-
   - `markImportant` fn from JS instead of walking through postcss AST nodes
   - use a fork of `stitches` `stringify` function instead of `postcss-css-in-js` to write the CSS string from a JS
     object
@@ -2308,7 +2302,6 @@
 - a669f4d5: Introduce new slot recipe features.
 
   Slot recipes are useful for styling composite or multi-part components easily.
-
   - `sva`: the slot recipe version of `cva`
   - `defineSlotRecipe`: the slot recipe version of `defineRecipe`
 
@@ -2376,7 +2369,6 @@
 ### Minor Changes
 
 - c08de87f: ### Breaking
-
   - Renamed the `name` property of a config recipe to `className`. This is to ensure API consistency and express the
     intent of the property more clearly.
 
@@ -2586,7 +2578,6 @@
 - a3d760ce: Do not allow all JSX properties to be extracted if none provided, rely on the `isStyleProp` fn instead
 
   This fixes cases when :
-
   - `eject: true` and only the `@pandacss/preset-base` is used (or none)
   - some non-styling JSX prop is extracted leading to an incorrect CSS rule being generated, ex:
 
@@ -2726,7 +2717,6 @@
 ### Patch Changes
 
 - fb40fff2: Initial release of all packages
-
   - Internal AST parser for TS and TSX
   - Support for defining presets in config
   - Support for design tokens (core and semantic)

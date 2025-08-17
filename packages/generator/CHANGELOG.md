@@ -209,7 +209,6 @@
 ### Minor Changes
 
 - 5286731: Add support for recent baseline and experimental css properties:
-
   - **Size interpolation:** fieldSizing, interpolateSize
   - **Text rendering:** textWrapMode, textWrapStyle and textSpacingTrim
   - **[Experimental] Anchor positioning:** anchorName, anchorScope, positionAnchor, positionArea, positionTry,
@@ -497,7 +496,6 @@
   `WithImportant<T>` and `WithColorOpacityModifier<T>` to use _branded type_ and _non-distributive conditional types_,
   while keeping such tokens valid and also not appearing in autocompletions to prevent them from polluting
   autocompletion result (which is the current behavior).
-
   - @pandacss/core@0.45.2
   - @pandacss/is-valid-prop@0.45.2
   - @pandacss/logger@0.45.2
@@ -657,14 +655,12 @@
   tldr: use `importMap` instead for absolute paths (e.g can be used for component libraries)
 
   `emitPackage` is deprecated, it's known for causing several issues:
-
   - bundlers sometimes eagerly cache the `node_modules`, leading to `panda codegen` updates to the `styled-system` not
     visible in the browser
   - auto-imports are not suggested in your IDE.
   - in some IDE the typings are not always reflected properly
 
   As alternatives, you can use:
-
   - relative paths instead of absolute paths (e.g. `../styled-system/css` instead of `styled-system/css`)
   - use package.json #imports and/or tsconfig path aliases (prefer package.json#imports when possible, TS 5.4 supports
     them by default) like `#styled-system/css` instead of `styled-system/css`
@@ -971,7 +967,6 @@
 ### Patch Changes
 
 - 74dfb3e: - Fix `sva` typings, the `splitVariantProps` was missing from the `d.ts` file
-
   - Add a `getVariantProps` helper to the slot recipes API (`sva` and `config slot recipes`)
 
   ```ts
@@ -1142,11 +1137,9 @@
 ### Minor Changes
 
 - bcfb5c5: ### Fixed
-
   - Fix className collisions between utilities by using unique class names per property in the default preset.
 
   ### Changed
-
   - **Color Mode Selectors**: Changed the default selectors for `_light` and `_dark` to target parent elements. This
     ensures consistent behavior with using these conditions to style pseudo elements (like `::before` and `::after`).
 
@@ -1162,7 +1155,6 @@
   - Changed `divideX` and `divideY` now maps to the `borderWidths` token group.
 
   ### Added
-
   - **Spacing Utilities**: Add new `spaceX` and `spaceY` utilities for applying margin between elements. Especially
     useful when applying negative margin to child elements.
 
@@ -1509,7 +1501,6 @@
   ```
 
   ## Description
-
   - Simplify typings for the style properties.
   - Add the `csstype` comments for each property.
 
@@ -2073,7 +2064,6 @@
 ### Minor Changes
 
 - f0296249: - Sort the longhand/shorthand atomic rules in a deterministic order to prevent property conflicts
-
   - Automatically merge the `base` object in the `css` root styles in the runtime
   - This may be a breaking change depending on how your styles are created
 
@@ -2234,7 +2224,6 @@
 ### Minor Changes
 
 - f58f6df2: Refactor `config.hooks` to be much more powerful, you can now:
-
   - Tweak the config after it has been resolved (after presets are loaded and merged), this could be used to dynamically
     load all `recipes` from a folder
   - Transform a source file's content before parsing it, this could be used to transform the file content to a
@@ -2349,7 +2338,6 @@
 - 84304901: Improve performance, mostly for the CSS generation by removing a lot of `postcss` usage (and plugins).
 
   ## Public changes:
-
   - Introduce a new `config.lightningcss` option to use `lightningcss` (currently disabled by default) instead of
     `postcss`.
   - Add a new `config.browserslist` option to configure the browserslist used by `lightningcss`.
@@ -2357,7 +2345,6 @@
     this run.
 
   ## Internal changes:
-
   - `markImportant` fn from JS instead of walking through postcss AST nodes
   - use a fork of `stitches` `stringify` function instead of `postcss-css-in-js` to write the CSS string from a JS
     object
@@ -2412,7 +2399,6 @@
 ### Patch Changes
 
 - a179d74f: tl;dr:
-
   - `config.strictTokens` will only affect properties that have config tokens, such as `color`, `bg`, `borderColor`,
     etc.
   - `config.strictPropertyValues` is added and will throw for properties that do not have config tokens, such as
@@ -3187,7 +3173,6 @@
 
   **Limitation:** This feature does not allow compose mixed styled composition. A mixed styled composition happens when
   an element is created from a cva/inline cva, and another created from a config recipe.
-
   - CVA or Inline CVA + CVA or Inline CVA = ✅
   - Config Recipe + Config Recipe = ✅
   - CVA or Inline CVA + Config Recipe = ❌
@@ -3268,7 +3253,6 @@
 
   In addition to the optional `glob` that you can already pass to override the config.include option, the `panda cssgen`
   command now accepts a new `{type}` argument to generate only a specific type of CSS:
-
   - preflight
   - tokens
   - static
@@ -3492,7 +3476,6 @@
 
 - 6d15776c: When bundling the `outdir` in a library, you usually want to generate type declaration files (`d.ts`).
   Sometimes TS will complain about types not being exported.
-
   - Export all types from `{outdir}/types/index.d.ts`, this fixes errors looking like this:
 
   ```
@@ -3642,7 +3625,6 @@
 ### Patch Changes
 
 - 6588c8e0: - Change the `css` function signature to allow passing multiple style objects that will be smartly merged.
-
   - Rename the `{cvaFn}.resolve` function to `{cva}.raw` for API consistency.
   - Change the behaviour of `{patternFn}.raw` to return the resulting `SystemStyleObject` instead of the arguments
     passed in. This is to allow the `css` function to merge the styles correctly.
@@ -3834,7 +3816,6 @@
 - a669f4d5: Introduce new slot recipe features.
 
   Slot recipes are useful for styling composite or multi-part components easily.
-
   - `sva`: the slot recipe version of `cva`
   - `defineSlotRecipe`: the slot recipe version of `defineRecipe`
 
@@ -3890,7 +3871,6 @@
   further reduce it.
 
   `config.jsxStyleProps`:
-
   - When set to 'all', all style props are allowed.
   - When set to 'minimal', only the `css` prop is allowed.
   - When set to 'none', no style props are allowed and therefore the `jsxFactory` will not be usable as a component:
@@ -3918,7 +3898,6 @@
 ### Minor Changes
 
 - c08de87f: ### Breaking
-
   - Renamed the `name` property of a config recipe to `className`. This is to ensure API consistency and express the
     intent of the property more clearly.
 
@@ -4303,7 +4282,6 @@
 ### Patch Changes
 
 - fb40fff2: Initial release of all packages
-
   - Internal AST parser for TS and TSX
   - Support for defining presets in config
   - Support for design tokens (core and semantic)
@@ -4363,7 +4341,6 @@ export default defineConfig({
 
 - 49c760cd: Fix issue where responsive array in css and cva doesn't generate the correct classname
 - d5977c24: - Add a `--logfile` flag to the `panda`, `panda codegen`, `panda cssgen` and `panda debug` commands.
-
   - Add a `logfile` option to the postcss plugin
 
   Logs will be streamed to the file specified by the `--logfile` flag or the `logfile` option. This is useful for
@@ -4459,7 +4436,6 @@ export default defineConfig({
 ### Minor Changes
 
 - f58f6df2: Refactor `config.hooks` to be much more powerful, you can now:
-
   - Tweak the config after it has been resolved (after presets are loaded and merged), this could be used to dynamically
     load all `recipes` from a folder
   - Transform a source file's content before parsing it, this could be used to transform the file content to a
@@ -4574,7 +4550,6 @@ export default defineConfig({
 - 84304901: Improve performance, mostly for the CSS generation by removing a lot of `postcss` usage (and plugins).
 
   ## Public changes:
-
   - Introduce a new `config.lightningcss` option to use `lightningcss` (currently disabled by default) instead of
     `postcss`.
   - Add a new `config.browserslist` option to configure the browserslist used by `lightningcss`.
@@ -4582,7 +4557,6 @@ export default defineConfig({
     this run.
 
   ## Internal changes:
-
   - `markImportant` fn from JS instead of walking through postcss AST nodes
   - use a fork of `stitches` `stringify` function instead of `postcss-css-in-js` to write the CSS string from a JS
     object
@@ -4637,7 +4611,6 @@ export default defineConfig({
 ### Patch Changes
 
 - a179d74f: tl;dr:
-
   - `config.strictTokens` will only affect properties that have config tokens, such as `color`, `bg`, `borderColor`,
     etc.
   - `config.strictPropertyValues` is added and will throw for properties that do not have config tokens, such as
@@ -5412,7 +5385,6 @@ export default defineConfig({
 
   **Limitation:** This feature does not allow compose mixed styled composition. A mixed styled composition happens when
   an element is created from a cva/inline cva, and another created from a config recipe.
-
   - CVA or Inline CVA + CVA or Inline CVA = ✅
   - Config Recipe + Config Recipe = ✅
   - CVA or Inline CVA + Config Recipe = ❌
@@ -5493,7 +5465,6 @@ export default defineConfig({
 
   In addition to the optional `glob` that you can already pass to override the config.include option, the `panda cssgen`
   command now accepts a new `{type}` argument to generate only a specific type of CSS:
-
   - preflight
   - tokens
   - static
@@ -5717,7 +5688,6 @@ export default defineConfig({
 
 - 6d15776c: When bundling the `outdir` in a library, you usually want to generate type declaration files (`d.ts`).
   Sometimes TS will complain about types not being exported.
-
   - Export all types from `{outdir}/types/index.d.ts`, this fixes errors looking like this:
 
   ```
@@ -5867,7 +5837,6 @@ export default defineConfig({
 ### Patch Changes
 
 - 6588c8e0: - Change the `css` function signature to allow passing multiple style objects that will be smartly merged.
-
   - Rename the `{cvaFn}.resolve` function to `{cva}.raw` for API consistency.
   - Change the behaviour of `{patternFn}.raw` to return the resulting `SystemStyleObject` instead of the arguments
     passed in. This is to allow the `css` function to merge the styles correctly.
@@ -6059,7 +6028,6 @@ export default defineConfig({
 - a669f4d5: Introduce new slot recipe features.
 
   Slot recipes are useful for styling composite or multi-part components easily.
-
   - `sva`: the slot recipe version of `cva`
   - `defineSlotRecipe`: the slot recipe version of `defineRecipe`
 
@@ -6115,7 +6083,6 @@ export default defineConfig({
   further reduce it.
 
   `config.jsxStyleProps`:
-
   - When set to 'all', all style props are allowed.
   - When set to 'minimal', only the `css` prop is allowed.
   - When set to 'none', no style props are allowed and therefore the `jsxFactory` will not be usable as a component:
@@ -6143,7 +6110,6 @@ export default defineConfig({
 ### Minor Changes
 
 - c08de87f: ### Breaking
-
   - Renamed the `name` property of a config recipe to `className`. This is to ensure API consistency and express the
     intent of the property more clearly.
 
@@ -6528,7 +6494,6 @@ export default defineConfig({
 ### Patch Changes
 
 - fb40fff2: Initial release of all packages
-
   - Internal AST parser for TS and TSX
   - Support for defining presets in config
   - Support for design tokens (core and semantic)
@@ -6658,7 +6623,6 @@ Will now allow you to use the following syntax for token path:
 ### Minor Changes
 
 - f0296249: - Sort the longhand/shorthand atomic rules in a deterministic order to prevent property conflicts
-
   - Automatically merge the `base` object in the `css` root styles in the runtime
   - This may be a breaking change depending on how your styles are created
 
@@ -6819,7 +6783,6 @@ Will now allow you to use the following syntax for token path:
 ### Minor Changes
 
 - f58f6df2: Refactor `config.hooks` to be much more powerful, you can now:
-
   - Tweak the config after it has been resolved (after presets are loaded and merged), this could be used to dynamically
     load all `recipes` from a folder
   - Transform a source file's content before parsing it, this could be used to transform the file content to a
@@ -6934,7 +6897,6 @@ Will now allow you to use the following syntax for token path:
 - 84304901: Improve performance, mostly for the CSS generation by removing a lot of `postcss` usage (and plugins).
 
   ## Public changes:
-
   - Introduce a new `config.lightningcss` option to use `lightningcss` (currently disabled by default) instead of
     `postcss`.
   - Add a new `config.browserslist` option to configure the browserslist used by `lightningcss`.
@@ -6942,7 +6904,6 @@ Will now allow you to use the following syntax for token path:
     this run.
 
   ## Internal changes:
-
   - `markImportant` fn from JS instead of walking through postcss AST nodes
   - use a fork of `stitches` `stringify` function instead of `postcss-css-in-js` to write the CSS string from a JS
     object
@@ -6997,7 +6958,6 @@ Will now allow you to use the following syntax for token path:
 ### Patch Changes
 
 - a179d74f: tl;dr:
-
   - `config.strictTokens` will only affect properties that have config tokens, such as `color`, `bg`, `borderColor`,
     etc.
   - `config.strictPropertyValues` is added and will throw for properties that do not have config tokens, such as
@@ -7772,7 +7732,6 @@ Will now allow you to use the following syntax for token path:
 
   **Limitation:** This feature does not allow compose mixed styled composition. A mixed styled composition happens when
   an element is created from a cva/inline cva, and another created from a config recipe.
-
   - CVA or Inline CVA + CVA or Inline CVA = ✅
   - Config Recipe + Config Recipe = ✅
   - CVA or Inline CVA + Config Recipe = ❌
@@ -7853,7 +7812,6 @@ Will now allow you to use the following syntax for token path:
 
   In addition to the optional `glob` that you can already pass to override the config.include option, the `panda cssgen`
   command now accepts a new `{type}` argument to generate only a specific type of CSS:
-
   - preflight
   - tokens
   - static
@@ -8077,7 +8035,6 @@ Will now allow you to use the following syntax for token path:
 
 - 6d15776c: When bundling the `outdir` in a library, you usually want to generate type declaration files (`d.ts`).
   Sometimes TS will complain about types not being exported.
-
   - Export all types from `{outdir}/types/index.d.ts`, this fixes errors looking like this:
 
   ```
@@ -8227,7 +8184,6 @@ Will now allow you to use the following syntax for token path:
 ### Patch Changes
 
 - 6588c8e0: - Change the `css` function signature to allow passing multiple style objects that will be smartly merged.
-
   - Rename the `{cvaFn}.resolve` function to `{cva}.raw` for API consistency.
   - Change the behaviour of `{patternFn}.raw` to return the resulting `SystemStyleObject` instead of the arguments
     passed in. This is to allow the `css` function to merge the styles correctly.
@@ -8419,7 +8375,6 @@ Will now allow you to use the following syntax for token path:
 - a669f4d5: Introduce new slot recipe features.
 
   Slot recipes are useful for styling composite or multi-part components easily.
-
   - `sva`: the slot recipe version of `cva`
   - `defineSlotRecipe`: the slot recipe version of `defineRecipe`
 
@@ -8475,7 +8430,6 @@ Will now allow you to use the following syntax for token path:
   further reduce it.
 
   `config.jsxStyleProps`:
-
   - When set to 'all', all style props are allowed.
   - When set to 'minimal', only the `css` prop is allowed.
   - When set to 'none', no style props are allowed and therefore the `jsxFactory` will not be usable as a component:
@@ -8503,7 +8457,6 @@ Will now allow you to use the following syntax for token path:
 ### Minor Changes
 
 - c08de87f: ### Breaking
-
   - Renamed the `name` property of a config recipe to `className`. This is to ensure API consistency and express the
     intent of the property more clearly.
 
@@ -8888,7 +8841,6 @@ Will now allow you to use the following syntax for token path:
 ### Patch Changes
 
 - fb40fff2: Initial release of all packages
-
   - Internal AST parser for TS and TSX
   - Support for defining presets in config
   - Support for design tokens (core and semantic)
@@ -8948,7 +8900,6 @@ export default defineConfig({
 
 - 49c760cd: Fix issue where responsive array in css and cva doesn't generate the correct classname
 - d5977c24: - Add a `--logfile` flag to the `panda`, `panda codegen`, `panda cssgen` and `panda debug` commands.
-
   - Add a `logfile` option to the postcss plugin
 
   Logs will be streamed to the file specified by the `--logfile` flag or the `logfile` option. This is useful for
@@ -9044,7 +8995,6 @@ export default defineConfig({
 ### Minor Changes
 
 - f58f6df2: Refactor `config.hooks` to be much more powerful, you can now:
-
   - Tweak the config after it has been resolved (after presets are loaded and merged), this could be used to dynamically
     load all `recipes` from a folder
   - Transform a source file's content before parsing it, this could be used to transform the file content to a
@@ -9159,7 +9109,6 @@ export default defineConfig({
 - 84304901: Improve performance, mostly for the CSS generation by removing a lot of `postcss` usage (and plugins).
 
   ## Public changes:
-
   - Introduce a new `config.lightningcss` option to use `lightningcss` (currently disabled by default) instead of
     `postcss`.
   - Add a new `config.browserslist` option to configure the browserslist used by `lightningcss`.
@@ -9167,7 +9116,6 @@ export default defineConfig({
     this run.
 
   ## Internal changes:
-
   - `markImportant` fn from JS instead of walking through postcss AST nodes
   - use a fork of `stitches` `stringify` function instead of `postcss-css-in-js` to write the CSS string from a JS
     object
@@ -9222,7 +9170,6 @@ export default defineConfig({
 ### Patch Changes
 
 - a179d74f: tl;dr:
-
   - `config.strictTokens` will only affect properties that have config tokens, such as `color`, `bg`, `borderColor`,
     etc.
   - `config.strictPropertyValues` is added and will throw for properties that do not have config tokens, such as
@@ -9997,7 +9944,6 @@ export default defineConfig({
 
   **Limitation:** This feature does not allow compose mixed styled composition. A mixed styled composition happens when
   an element is created from a cva/inline cva, and another created from a config recipe.
-
   - CVA or Inline CVA + CVA or Inline CVA = ✅
   - Config Recipe + Config Recipe = ✅
   - CVA or Inline CVA + Config Recipe = ❌
@@ -10078,7 +10024,6 @@ export default defineConfig({
 
   In addition to the optional `glob` that you can already pass to override the config.include option, the `panda cssgen`
   command now accepts a new `{type}` argument to generate only a specific type of CSS:
-
   - preflight
   - tokens
   - static
@@ -10302,7 +10247,6 @@ export default defineConfig({
 
 - 6d15776c: When bundling the `outdir` in a library, you usually want to generate type declaration files (`d.ts`).
   Sometimes TS will complain about types not being exported.
-
   - Export all types from `{outdir}/types/index.d.ts`, this fixes errors looking like this:
 
   ```
@@ -10452,7 +10396,6 @@ export default defineConfig({
 ### Patch Changes
 
 - 6588c8e0: - Change the `css` function signature to allow passing multiple style objects that will be smartly merged.
-
   - Rename the `{cvaFn}.resolve` function to `{cva}.raw` for API consistency.
   - Change the behaviour of `{patternFn}.raw` to return the resulting `SystemStyleObject` instead of the arguments
     passed in. This is to allow the `css` function to merge the styles correctly.
@@ -10644,7 +10587,6 @@ export default defineConfig({
 - a669f4d5: Introduce new slot recipe features.
 
   Slot recipes are useful for styling composite or multi-part components easily.
-
   - `sva`: the slot recipe version of `cva`
   - `defineSlotRecipe`: the slot recipe version of `defineRecipe`
 
@@ -10700,7 +10642,6 @@ export default defineConfig({
   further reduce it.
 
   `config.jsxStyleProps`:
-
   - When set to 'all', all style props are allowed.
   - When set to 'minimal', only the `css` prop is allowed.
   - When set to 'none', no style props are allowed and therefore the `jsxFactory` will not be usable as a component:
@@ -10728,7 +10669,6 @@ export default defineConfig({
 ### Minor Changes
 
 - c08de87f: ### Breaking
-
   - Renamed the `name` property of a config recipe to `className`. This is to ensure API consistency and express the
     intent of the property more clearly.
 
@@ -11113,7 +11053,6 @@ export default defineConfig({
 ### Patch Changes
 
 - fb40fff2: Initial release of all packages
-
   - Internal AST parser for TS and TSX
   - Support for defining presets in config
   - Support for design tokens (core and semantic)

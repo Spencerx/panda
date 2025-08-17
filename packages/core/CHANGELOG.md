@@ -72,7 +72,6 @@
 
 - a20811c: - Fix issue where `@property` fallbacks does not work correctly when global vars are used in no
   `initial-value`
-
   - Sort `fieldSizing` property properly
 
 - Updated dependencies [a3bcbea]
@@ -557,14 +556,12 @@
   tldr: use `importMap` instead for absolute paths (e.g can be used for component libraries)
 
   `emitPackage` is deprecated, it's known for causing several issues:
-
   - bundlers sometimes eagerly cache the `node_modules`, leading to `panda codegen` updates to the `styled-system` not
     visible in the browser
   - auto-imports are not suggested in your IDE.
   - in some IDE the typings are not always reflected properly
 
   As alternatives, you can use:
-
   - relative paths instead of absolute paths (e.g. `../styled-system/css` instead of `styled-system/css`)
   - use package.json #imports and/or tsconfig path aliases (prefer package.json#imports when possible, TS 5.4 supports
     them by default) like `#styled-system/css` instead of `styled-system/css`
@@ -653,12 +650,10 @@
 - 5dcdae4: Improve monorepo setup DX by exposing some cli flags
 
   ### `panda init`
-
   - Added new flag `--no-codegen` to skip codegen during initialization
   - Added new flag `--outdir` to specify the output directory for generated files
 
   ### `panda emit-pkg`
-
   - Added new `--base` flag to specify the base directory for the entrypoints in the generated `package.json#exports`
     field
 
@@ -883,11 +878,9 @@
 ### Minor Changes
 
 - bcfb5c5: ### Fixed
-
   - Fix className collisions between utilities by using unique class names per property in the default preset.
 
   ### Changed
-
   - **Color Mode Selectors**: Changed the default selectors for `_light` and `_dark` to target parent elements. This
     ensures consistent behavior with using these conditions to style pseudo elements (like `::before` and `::after`).
 
@@ -903,7 +896,6 @@
   - Changed `divideX` and `divideY` now maps to the `borderWidths` token group.
 
   ### Added
-
   - **Spacing Utilities**: Add new `spaceX` and `spaceY` utilities for applying margin between elements. Especially
     useful when applying negative margin to child elements.
 
@@ -1265,7 +1257,6 @@
   ```
 
   ## Description
-
   - Simplify typings for the style properties.
   - Add the `csstype` comments for each property.
 
@@ -1369,7 +1360,6 @@
 ### Patch Changes
 
 - 64d5144: Allow using the color opacity modifier syntax (`blue.300/70`) in token references:
-
   - `{colors.blue.300/70}`
   - `token(colors.blue.300/70)`
 
@@ -1518,7 +1508,6 @@
   keeping it as a string.
 
 - f419993: - Prevent extracting style props of `styled` when not explicitly imported
-
   - Allow using multiple aliases for the same identifier for the `/css` entrypoints just like `/patterns` and `/recipes`
 
   ```ts
@@ -1562,7 +1551,6 @@
 ### Minor Changes
 
 - f0296249: - Sort the longhand/shorthand atomic rules in a deterministic order to prevent property conflicts
-
   - Automatically merge the `base` object in the `css` root styles in the runtime
   - This may be a breaking change depending on how your styles are created
 
@@ -1973,7 +1961,6 @@
 ### Minor Changes
 
 - f58f6df2: Refactor `config.hooks` to be much more powerful, you can now:
-
   - Tweak the config after it has been resolved (after presets are loaded and merged), this could be used to dynamically
     load all `recipes` from a folder
   - Transform a source file's content before parsing it, this could be used to transform the file content to a
@@ -2157,7 +2144,6 @@
 - 84304901: Improve performance, mostly for the CSS generation by removing a lot of `postcss` usage (and plugins).
 
   ## Public changes:
-
   - Introduce a new `config.lightningcss` option to use `lightningcss` (currently disabled by default) instead of
     `postcss`.
   - Add a new `config.browserslist` option to configure the browserslist used by `lightningcss`.
@@ -2165,7 +2151,6 @@
     this run.
 
   ## Internal changes:
-
   - `markImportant` fn from JS instead of walking through postcss AST nodes
   - use a fork of `stitches` `stringify` function instead of `postcss-css-in-js` to write the CSS string from a JS
     object
@@ -2549,7 +2534,6 @@
   Initial extraction time can get slow when using static CSS with lots of recipes or parsing a lot of files.
 
   **Scenarios**
-
   - Park UI went from 3500ms to 580ms (6x faster)
   - Panda Website went from 2900ms to 208ms (14x faster)
 
@@ -3106,7 +3090,6 @@
 - a669f4d5: Introduce new slot recipe features.
 
   Slot recipes are useful for styling composite or multi-part components easily.
-
   - `sva`: the slot recipe version of `cva`
   - `defineSlotRecipe`: the slot recipe version of `defineRecipe`
 
@@ -3174,7 +3157,6 @@
 ### Minor Changes
 
 - c08de87f: ### Breaking
-
   - Renamed the `name` property of a config recipe to `className`. This is to ensure API consistency and express the
     intent of the property more clearly.
 
@@ -3342,7 +3324,6 @@
 ### Patch Changes
 
 - f9247e52: Provide better error logs:
-
   - full stacktrace when using PANDA_DEBUG
   - specific CssSyntaxError to better spot the error
 
@@ -3456,7 +3437,6 @@
 ### Patch Changes
 
 - fb40fff2: Initial release of all packages
-
   - Internal AST parser for TS and TSX
   - Support for defining presets in config
   - Support for design tokens (core and semantic)
@@ -3514,7 +3494,6 @@ export default defineConfig({
 ```
 
 - d5977c24: - Add a `--logfile` flag to the `panda`, `panda codegen`, `panda cssgen` and `panda debug` commands.
-
   - Add a `logfile` option to the postcss plugin
 
   Logs will be streamed to the file specified by the `--logfile` flag or the `logfile` option. This is useful for
@@ -3832,7 +3811,6 @@ export default defineConfig({
 ### Minor Changes
 
 - f58f6df2: Refactor `config.hooks` to be much more powerful, you can now:
-
   - Tweak the config after it has been resolved (after presets are loaded and merged), this could be used to dynamically
     load all `recipes` from a folder
   - Transform a source file's content before parsing it, this could be used to transform the file content to a
@@ -4016,7 +3994,6 @@ export default defineConfig({
 - 84304901: Improve performance, mostly for the CSS generation by removing a lot of `postcss` usage (and plugins).
 
   ## Public changes:
-
   - Introduce a new `config.lightningcss` option to use `lightningcss` (currently disabled by default) instead of
     `postcss`.
   - Add a new `config.browserslist` option to configure the browserslist used by `lightningcss`.
@@ -4024,7 +4001,6 @@ export default defineConfig({
     this run.
 
   ## Internal changes:
-
   - `markImportant` fn from JS instead of walking through postcss AST nodes
   - use a fork of `stitches` `stringify` function instead of `postcss-css-in-js` to write the CSS string from a JS
     object
@@ -4408,7 +4384,6 @@ export default defineConfig({
   Initial extraction time can get slow when using static CSS with lots of recipes or parsing a lot of files.
 
   **Scenarios**
-
   - Park UI went from 3500ms to 580ms (6x faster)
   - Panda Website went from 2900ms to 208ms (14x faster)
 
@@ -4965,7 +4940,6 @@ export default defineConfig({
 - a669f4d5: Introduce new slot recipe features.
 
   Slot recipes are useful for styling composite or multi-part components easily.
-
   - `sva`: the slot recipe version of `cva`
   - `defineSlotRecipe`: the slot recipe version of `defineRecipe`
 
@@ -5033,7 +5007,6 @@ export default defineConfig({
 ### Minor Changes
 
 - c08de87f: ### Breaking
-
   - Renamed the `name` property of a config recipe to `className`. This is to ensure API consistency and express the
     intent of the property more clearly.
 
@@ -5201,7 +5174,6 @@ export default defineConfig({
 ### Patch Changes
 
 - f9247e52: Provide better error logs:
-
   - full stacktrace when using PANDA_DEBUG
   - specific CssSyntaxError to better spot the error
 
@@ -5315,7 +5287,6 @@ export default defineConfig({
 ### Patch Changes
 
 - fb40fff2: Initial release of all packages
-
   - Internal AST parser for TS and TSX
   - Support for defining presets in config
   - Support for design tokens (core and semantic)
@@ -5421,7 +5392,6 @@ Will now allow you to use the following syntax for token path:
   keeping it as a string.
 
 - f419993: - Prevent extracting style props of `styled` when not explicitly imported
-
   - Allow using multiple aliases for the same identifier for the `/css` entrypoints just like `/patterns` and `/recipes`
 
   ```ts
@@ -5465,7 +5435,6 @@ Will now allow you to use the following syntax for token path:
 ### Minor Changes
 
 - f0296249: - Sort the longhand/shorthand atomic rules in a deterministic order to prevent property conflicts
-
   - Automatically merge the `base` object in the `css` root styles in the runtime
   - This may be a breaking change depending on how your styles are created
 
@@ -5876,7 +5845,6 @@ Will now allow you to use the following syntax for token path:
 ### Minor Changes
 
 - f58f6df2: Refactor `config.hooks` to be much more powerful, you can now:
-
   - Tweak the config after it has been resolved (after presets are loaded and merged), this could be used to dynamically
     load all `recipes` from a folder
   - Transform a source file's content before parsing it, this could be used to transform the file content to a
@@ -6060,7 +6028,6 @@ Will now allow you to use the following syntax for token path:
 - 84304901: Improve performance, mostly for the CSS generation by removing a lot of `postcss` usage (and plugins).
 
   ## Public changes:
-
   - Introduce a new `config.lightningcss` option to use `lightningcss` (currently disabled by default) instead of
     `postcss`.
   - Add a new `config.browserslist` option to configure the browserslist used by `lightningcss`.
@@ -6068,7 +6035,6 @@ Will now allow you to use the following syntax for token path:
     this run.
 
   ## Internal changes:
-
   - `markImportant` fn from JS instead of walking through postcss AST nodes
   - use a fork of `stitches` `stringify` function instead of `postcss-css-in-js` to write the CSS string from a JS
     object
@@ -6452,7 +6418,6 @@ Will now allow you to use the following syntax for token path:
   Initial extraction time can get slow when using static CSS with lots of recipes or parsing a lot of files.
 
   **Scenarios**
-
   - Park UI went from 3500ms to 580ms (6x faster)
   - Panda Website went from 2900ms to 208ms (14x faster)
 
@@ -7009,7 +6974,6 @@ Will now allow you to use the following syntax for token path:
 - a669f4d5: Introduce new slot recipe features.
 
   Slot recipes are useful for styling composite or multi-part components easily.
-
   - `sva`: the slot recipe version of `cva`
   - `defineSlotRecipe`: the slot recipe version of `defineRecipe`
 
@@ -7077,7 +7041,6 @@ Will now allow you to use the following syntax for token path:
 ### Minor Changes
 
 - c08de87f: ### Breaking
-
   - Renamed the `name` property of a config recipe to `className`. This is to ensure API consistency and express the
     intent of the property more clearly.
 
@@ -7245,7 +7208,6 @@ Will now allow you to use the following syntax for token path:
 ### Patch Changes
 
 - f9247e52: Provide better error logs:
-
   - full stacktrace when using PANDA_DEBUG
   - specific CssSyntaxError to better spot the error
 
@@ -7359,7 +7321,6 @@ Will now allow you to use the following syntax for token path:
 ### Patch Changes
 
 - fb40fff2: Initial release of all packages
-
   - Internal AST parser for TS and TSX
   - Support for defining presets in config
   - Support for design tokens (core and semantic)
@@ -7417,7 +7378,6 @@ export default defineConfig({
 ```
 
 - d5977c24: - Add a `--logfile` flag to the `panda`, `panda codegen`, `panda cssgen` and `panda debug` commands.
-
   - Add a `logfile` option to the postcss plugin
 
   Logs will be streamed to the file specified by the `--logfile` flag or the `logfile` option. This is useful for
@@ -7735,7 +7695,6 @@ export default defineConfig({
 ### Minor Changes
 
 - f58f6df2: Refactor `config.hooks` to be much more powerful, you can now:
-
   - Tweak the config after it has been resolved (after presets are loaded and merged), this could be used to dynamically
     load all `recipes` from a folder
   - Transform a source file's content before parsing it, this could be used to transform the file content to a
@@ -7919,7 +7878,6 @@ export default defineConfig({
 - 84304901: Improve performance, mostly for the CSS generation by removing a lot of `postcss` usage (and plugins).
 
   ## Public changes:
-
   - Introduce a new `config.lightningcss` option to use `lightningcss` (currently disabled by default) instead of
     `postcss`.
   - Add a new `config.browserslist` option to configure the browserslist used by `lightningcss`.
@@ -7927,7 +7885,6 @@ export default defineConfig({
     this run.
 
   ## Internal changes:
-
   - `markImportant` fn from JS instead of walking through postcss AST nodes
   - use a fork of `stitches` `stringify` function instead of `postcss-css-in-js` to write the CSS string from a JS
     object
@@ -8311,7 +8268,6 @@ export default defineConfig({
   Initial extraction time can get slow when using static CSS with lots of recipes or parsing a lot of files.
 
   **Scenarios**
-
   - Park UI went from 3500ms to 580ms (6x faster)
   - Panda Website went from 2900ms to 208ms (14x faster)
 
@@ -8868,7 +8824,6 @@ export default defineConfig({
 - a669f4d5: Introduce new slot recipe features.
 
   Slot recipes are useful for styling composite or multi-part components easily.
-
   - `sva`: the slot recipe version of `cva`
   - `defineSlotRecipe`: the slot recipe version of `defineRecipe`
 
@@ -8936,7 +8891,6 @@ export default defineConfig({
 ### Minor Changes
 
 - c08de87f: ### Breaking
-
   - Renamed the `name` property of a config recipe to `className`. This is to ensure API consistency and express the
     intent of the property more clearly.
 
@@ -9104,7 +9058,6 @@ export default defineConfig({
 ### Patch Changes
 
 - f9247e52: Provide better error logs:
-
   - full stacktrace when using PANDA_DEBUG
   - specific CssSyntaxError to better spot the error
 
@@ -9218,7 +9171,6 @@ export default defineConfig({
 ### Patch Changes
 
 - fb40fff2: Initial release of all packages
-
   - Internal AST parser for TS and TSX
   - Support for defining presets in config
   - Support for design tokens (core and semantic)

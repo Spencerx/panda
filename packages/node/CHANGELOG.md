@@ -287,7 +287,6 @@
 
 - fea78c7: Adds support for static analysis of used tokens and recipe variants. It helps to get a birds-eye view of how
   your design system is used and answers the following questions:
-
   - What tokens are most used?
   - What recipe variants are most used?
   - How many hardcoded values vs tokens do we have?
@@ -584,12 +583,10 @@
 - 5dcdae4: Improve monorepo setup DX by exposing some cli flags
 
   ### `panda init`
-
   - Added new flag `--no-codegen` to skip codegen during initialization
   - Added new flag `--outdir` to specify the output directory for generated files
 
   ### `panda emit-pkg`
-
   - Added new `--base` flag to specify the base directory for the entrypoints in the generated `package.json#exports`
     field
 
@@ -940,7 +937,6 @@
 ### Minor Changes
 
 - f0296249: - Sort the longhand/shorthand atomic rules in a deterministic order to prevent property conflicts
-
   - Automatically merge the `base` object in the `css` root styles in the runtime
   - This may be a breaking change depending on how your styles are created
 
@@ -1113,7 +1109,6 @@
 ### Minor Changes
 
 - f58f6df2: Refactor `config.hooks` to be much more powerful, you can now:
-
   - Tweak the config after it has been resolved (after presets are loaded and merged), this could be used to dynamically
     load all `recipes` from a folder
   - Transform a source file's content before parsing it, this could be used to transform the file content to a
@@ -1254,7 +1249,6 @@
 - 84304901: Improve performance, mostly for the CSS generation by removing a lot of `postcss` usage (and plugins).
 
   ## Public changes:
-
   - Introduce a new `config.lightningcss` option to use `lightningcss` (currently disabled by default) instead of
     `postcss`.
   - Add a new `config.browserslist` option to configure the browserslist used by `lightningcss`.
@@ -1262,7 +1256,6 @@
     this run.
 
   ## Internal changes:
-
   - `markImportant` fn from JS instead of walking through postcss AST nodes
   - use a fork of `stitches` `stringify` function instead of `postcss-css-in-js` to write the CSS string from a JS
     object
@@ -1488,7 +1481,6 @@
   Initial extraction time can get slow when using static CSS with lots of recipes or parsing a lot of files.
 
   **Scenarios**
-
   - Park UI went from 3500ms to 580ms (6x faster)
   - Panda Website went from 2900ms to 208ms (14x faster)
 
@@ -1798,7 +1790,6 @@
 
   **Limitation:** This feature does not allow compose mixed styled composition. A mixed styled composition happens when
   an element is created from a cva/inline cva, and another created from a config recipe.
-
   - CVA or Inline CVA + CVA or Inline CVA = ✅
   - Config Recipe + Config Recipe = ✅
   - CVA or Inline CVA + Config Recipe = ❌
@@ -1865,7 +1856,6 @@
 
   In addition to the optional `glob` that you can already pass to override the config.include option, the `panda cssgen`
   command now accepts a new `{type}` argument to generate only a specific type of CSS:
-
   - preflight
   - tokens
   - static
@@ -2332,7 +2322,6 @@
   path `src/styled-system`
 - e48b130a: - Remove `stack` from `box.toJSON()` so that generated JSON files have less noise, mostly useful to get make
   the `panda debug` command easier to read
-
   - Also use the `ParserResult.toJSON()` method on `panda debug` command for the same reason
 
   instead of:
@@ -2559,7 +2548,6 @@
 ### Patch Changes
 
 - fb40fff2: Initial release of all packages
-
   - Internal AST parser for TS and TSX
   - Support for defining presets in config
   - Support for design tokens (core and semantic)
@@ -2623,7 +2611,6 @@ export default defineConfig({
 ```
 
 - d5977c24: - Add a `--logfile` flag to the `panda`, `panda codegen`, `panda cssgen` and `panda debug` commands.
-
   - Add a `logfile` option to the postcss plugin
 
   Logs will be streamed to the file specified by the `--logfile` flag or the `logfile` option. This is useful for
@@ -2724,7 +2711,6 @@ export default defineConfig({
 ### Minor Changes
 
 - f58f6df2: Refactor `config.hooks` to be much more powerful, you can now:
-
   - Tweak the config after it has been resolved (after presets are loaded and merged), this could be used to dynamically
     load all `recipes` from a folder
   - Transform a source file's content before parsing it, this could be used to transform the file content to a
@@ -2865,7 +2851,6 @@ export default defineConfig({
 - 84304901: Improve performance, mostly for the CSS generation by removing a lot of `postcss` usage (and plugins).
 
   ## Public changes:
-
   - Introduce a new `config.lightningcss` option to use `lightningcss` (currently disabled by default) instead of
     `postcss`.
   - Add a new `config.browserslist` option to configure the browserslist used by `lightningcss`.
@@ -2873,7 +2858,6 @@ export default defineConfig({
     this run.
 
   ## Internal changes:
-
   - `markImportant` fn from JS instead of walking through postcss AST nodes
   - use a fork of `stitches` `stringify` function instead of `postcss-css-in-js` to write the CSS string from a JS
     object
@@ -3099,7 +3083,6 @@ export default defineConfig({
   Initial extraction time can get slow when using static CSS with lots of recipes or parsing a lot of files.
 
   **Scenarios**
-
   - Park UI went from 3500ms to 580ms (6x faster)
   - Panda Website went from 2900ms to 208ms (14x faster)
 
@@ -3409,7 +3392,6 @@ export default defineConfig({
 
   **Limitation:** This feature does not allow compose mixed styled composition. A mixed styled composition happens when
   an element is created from a cva/inline cva, and another created from a config recipe.
-
   - CVA or Inline CVA + CVA or Inline CVA = ✅
   - Config Recipe + Config Recipe = ✅
   - CVA or Inline CVA + Config Recipe = ❌
@@ -3476,7 +3458,6 @@ export default defineConfig({
 
   In addition to the optional `glob` that you can already pass to override the config.include option, the `panda cssgen`
   command now accepts a new `{type}` argument to generate only a specific type of CSS:
-
   - preflight
   - tokens
   - static
@@ -3943,7 +3924,6 @@ export default defineConfig({
   path `src/styled-system`
 - e48b130a: - Remove `stack` from `box.toJSON()` so that generated JSON files have less noise, mostly useful to get make
   the `panda debug` command easier to read
-
   - Also use the `ParserResult.toJSON()` method on `panda debug` command for the same reason
 
   instead of:
@@ -4170,7 +4150,6 @@ export default defineConfig({
 ### Patch Changes
 
 - fb40fff2: Initial release of all packages
-
   - Internal AST parser for TS and TSX
   - Support for defining presets in config
   - Support for design tokens (core and semantic)
