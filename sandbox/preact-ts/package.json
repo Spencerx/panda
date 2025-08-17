@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "@pandacss/dev": "workspace:*",
-    "@preact/preset-vite": "2.10.1",
+    "@preact/preset-vite": "2.10.2",
     "typescript": "5.8.3",
     "vite": "7.0.6",
     "vite-tsconfig-paths": "5.1.4"
