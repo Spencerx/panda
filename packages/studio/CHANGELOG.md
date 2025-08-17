@@ -327,7 +327,6 @@
   `WithImportant<T>` and `WithColorOpacityModifier<T>` to use _branded type_ and _non-distributive conditional types_,
   while keeping such tokens valid and also not appearing in autocompletions to prevent them from polluting
   autocompletion result (which is the current behavior).
-
   - @pandacss/astro-plugin-studio@0.45.2
   - @pandacss/config@0.45.2
   - @pandacss/logger@0.45.2
@@ -513,14 +512,12 @@
 ### Patch Changes
 
 - 93dc9f5: Public changes: Some quality of life fixes for the Studio:
-
   - Handle displaying values using the `[xxx]` escape-hatch syntax for `textStyles` in the studio
   - Display an empty state when there's no token in a specific token page in the studio
 
   ***
 
   (mostly) Internal changes:
-
   - Add `deepResolveReference` in TokenDictionary, helpful to get the raw value from a semantic token by recursively
     traversing the token references.
   - Added some exports in the `@pandacss/token-dictionary` package, mostly useful when building tooling around Panda
@@ -688,7 +685,6 @@
   ```
 
   ## Description
-
   - Simplify typings for the style properties.
   - Add the `csstype` comments for each property.
 
@@ -1001,7 +997,6 @@
 - 84304901: Improve performance, mostly for the CSS generation by removing a lot of `postcss` usage (and plugins).
 
   ## Public changes:
-
   - Introduce a new `config.lightningcss` option to use `lightningcss` (currently disabled by default) instead of
     `postcss`.
   - Add a new `config.browserslist` option to configure the browserslist used by `lightningcss`.
@@ -1009,7 +1004,6 @@
     this run.
 
   ## Internal changes:
-
   - `markImportant` fn from JS instead of walking through postcss AST nodes
   - use a fork of `stitches` `stringify` function instead of `postcss-css-in-js` to write the CSS string from a JS
     object
@@ -1710,7 +1704,6 @@ export default defineConfig({
 ```
 
 - d5977c24: - Add a `--logfile` flag to the `panda`, `panda codegen`, `panda cssgen` and `panda debug` commands.
-
   - Add a `logfile` option to the postcss plugin
 
   Logs will be streamed to the file specified by the `--logfile` flag or the `logfile` option. This is useful for
@@ -1828,7 +1821,6 @@ export default defineConfig({
 - 84304901: Improve performance, mostly for the CSS generation by removing a lot of `postcss` usage (and plugins).
 
   ## Public changes:
-
   - Introduce a new `config.lightningcss` option to use `lightningcss` (currently disabled by default) instead of
     `postcss`.
   - Add a new `config.browserslist` option to configure the browserslist used by `lightningcss`.
@@ -1836,7 +1828,6 @@ export default defineConfig({
     this run.
 
   ## Internal changes:
-
   - `markImportant` fn from JS instead of walking through postcss AST nodes
   - use a fork of `stitches` `stringify` function instead of `postcss-css-in-js` to write the CSS string from a JS
     object
