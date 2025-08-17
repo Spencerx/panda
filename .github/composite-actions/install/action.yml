@@ -19,6 +19,8 @@ runs:
         git config --global user.email "joseshegs@gmail.com"
         git config --global user.name "Segun Adebayo"
 
-    - name: Install dependencies
+    - name: Clean and install dependencies
       shell: bash
-      run: pnpm install
+      run: |
+        rm -rf node_modules
+        pnpm install --frozen-lockfile

@@ -132,4 +132,4 @@ The development of Panda was only possible due to the inspiration and ideas from
 
 ## License
 
-MIT License © 2023-Present [Segun Adebayo](https://github.com/segunadebayo)
+MIT License © 2023-Present Chakra Systems
